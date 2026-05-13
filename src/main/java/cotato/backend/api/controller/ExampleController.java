@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cotato.backend.api.dto.response.DefaultIdResponse;
 import cotato.backend.common.dto.DataResponse;
-import cotato.backend.domain.example.application.ExampleService;
-import cotato.backend.domain.example.dto.request.ExampleRequest;
-import cotato.backend.domain.example.dto.response.ExampleResponse;
+import cotato.backend.domain.like.application.ExampleService;
+import cotato.backend.domain.like.dto.request.ExampleRequest;
+import cotato.backend.domain.like.dto.response.ExampleResponse;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
