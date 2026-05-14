@@ -8,15 +8,11 @@ import jakarta.validation.constraints.Size;
 
 public record ApplicantUpdateRequest(
 
-        @NotBlank
-        @Size(min = 2, max = 10)
-        String name,
+        @NotBlank String name,
 
-        @Min(22)
-        @Max(30)
+        @Min(22) @Max(30)
         Integer age,
 
-        @NotBlank
-        String phoneNumber
+        @NotBlank String phoneNumber
 ) {
 }

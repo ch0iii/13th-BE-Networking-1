@@ -2,6 +2,7 @@ package cotato.backend.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,7 +32,7 @@ public class UserEntity {
     private Type userType;
 
     @Enumerated(STRING)
-    private Role staffRole;
+    private Role role;
 
     @Builder
     public UserEntity(
@@ -39,13 +40,13 @@ public class UserEntity {
             Integer age,
             String phoneNumber,
             Type userType,
-            Role staffRole
+            Role role
     ) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.userType = userType;
-        this.staffRole = staffRole;
+        this.role = role;
     }
 
     public void updateApplicantInfo(String name, Integer age, String phoneNumber) {
@@ -54,10 +55,10 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public void updateStaffInfo(String name, Integer age, String phoneNumber, Role staffRole) {
+    public void updateStaffInfo(String name, Integer age, String phoneNumber, Role role) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
-        this.staffRole = staffRole;
+        this.role = role;
     }
 }
