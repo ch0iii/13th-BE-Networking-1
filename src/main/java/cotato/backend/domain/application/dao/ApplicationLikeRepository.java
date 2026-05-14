@@ -4,4 +4,8 @@ import cotato.backend.domain.application.entity.ApplicationLike;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ApplicationLikeRepository extends JpaRepository<ApplicationLike, Long> {
+
+    Long countByApplicationId(Long applicationId);
+    Optional<ApplicationLike> findByApplicationIdAndStaffId(Long applicationId, Long staffId);
+
 }

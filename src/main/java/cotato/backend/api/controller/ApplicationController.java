@@ -1,9 +1,14 @@
 package cotato.backend.api.controller;
 
+import java.util.List;
 import cotato.backend.api.dto.response.DefaultIdResponse;
 import cotato.backend.common.dto.DataResponse;
 import cotato.backend.domain.application.application.ApplicationService;
 import cotato.backend.domain.application.dto.request.ApplicationCreateRequest;
+import cotato.backend.domain.application.dto.response.ApplicationDetailResponse;
+import cotato.backend.domain.application.dto.response.ApplicationListResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

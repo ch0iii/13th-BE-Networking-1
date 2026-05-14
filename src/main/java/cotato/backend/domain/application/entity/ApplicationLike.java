@@ -3,16 +3,16 @@ package cotato.backend.domain.application.entity;
 import cotato.backend.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.FetchType.*;
 import static jakarta.persistence.GenerationType.IDENTITY;
-import static lombok.AccessLevel.*;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = PROTECTED)
+@NoArgsConstructor
 @Table(name = "application_like")
 public class ApplicationLike {
 
@@ -24,7 +24,13 @@ public class ApplicationLike {
     @JoinColumn(name = "application_id", nullable = false)
     private Application application;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity applicant;
+    private UserEntity staff;
+
+    @Builder
+    public ApplicationLike(Application application, UserEntity staff) {
+        this.application = application;
+        this.staff = staff;
+    }
 }

@@ -3,12 +3,17 @@ package cotato.backend.domain.application.entity;
 import cotato.backend.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.*;
 
 @Entity
+@Getter
+@NoArgsConstructor
+@Table(name = "application")
 public class Application {
 
     @Id
