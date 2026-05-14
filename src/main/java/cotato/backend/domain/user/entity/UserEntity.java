@@ -11,7 +11,8 @@ import static jakarta.persistence.GenerationType.*;
 import static lombok.AccessLevel.*;
 
 @Entity
-@Table(name = "users")@NoArgsConstructor(access = PROTECTED)
+@Table(name = "users")
+@NoArgsConstructor
 @Getter
 public class UserEntity {
 
@@ -29,7 +30,7 @@ public class UserEntity {
     private String phoneNumber;
 
     @Enumerated(STRING)
-    private Type userType;
+    private UserType userType;
 
     @Enumerated(STRING)
     private Role role;
@@ -39,7 +40,7 @@ public class UserEntity {
             String name,
             Integer age,
             String phoneNumber,
-            Type userType,
+            UserType userType,
             Role role
     ) {
         this.name = name;

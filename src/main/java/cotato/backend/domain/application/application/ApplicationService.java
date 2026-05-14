@@ -9,7 +9,7 @@ import cotato.backend.domain.application.dto.response.ApplicationListResponse;
 import cotato.backend.domain.application.entity.Application;
 import cotato.backend.domain.application.entity.ApplicationLike;
 import cotato.backend.domain.user.dao.UserRepository;
-import cotato.backend.domain.user.entity.Type;
+import cotato.backend.domain.user.entity.UserType;
 import cotato.backend.domain.user.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class ApplicationService {
                                 .name(request.name())
                                 .age(request.age())
                                 .phoneNumber(request.phoneNumber())
-                                .userType(Type.APPLICANT)
+                                .userType(UserType.APPLICANT)
                                 .role(null)
                                 .build()
                 ));
@@ -122,7 +122,7 @@ public class ApplicationService {
         UserEntity admin = userRepository.findById(userId)
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
-        if (admin.getUserType() != Type.ADMIN) {
+        if (admin.getUserType() != UserType.ADMIN) {
             throw new AppException(ErrorCode.ONLY_ADMIN_CAN_LIKE);
         }
 

@@ -7,12 +7,12 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum Role {
 
-        PRESIDENT("회장"),
-        VICE_PRESIDENT("부회장"),
-        PART_LEADER("파트장"),
-        PLANNING_LEADER("기획팀장"),
-        PROMOTION_LEADER("홍보팀장"),
-        EDUCATION_LEADER("교육팀장");
+        PRESIDENT("ROLE_PRESIDENT"),
+        VICE_PRESIDENT("ROLE_VICE_PRESIDENT"),
+        PART_LEADER("ROLE_PART_LEADER"),
+        PLANNING_LEADER("ROLE_PLANNING_LEADER"),
+        PROMOTION_LEADER("ROLE_PROMOTION_LEADER"),
+        EDUCATION_LEADER("ROLE_EDUCATION_LEADER");
 
         private final String value;
 

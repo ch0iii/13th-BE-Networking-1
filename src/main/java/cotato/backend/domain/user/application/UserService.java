@@ -8,12 +8,11 @@ import cotato.backend.domain.user.dto.request.AdminUpdateRequest;
 import cotato.backend.domain.user.dto.request.ApplicantUpdateRequest;
 import cotato.backend.domain.user.dto.response.AdminResponse;
 import cotato.backend.domain.user.dto.response.ApplicantResponse;
-import cotato.backend.domain.user.entity.Type;
+import cotato.backend.domain.user.entity.UserType;
 import cotato.backend.domain.user.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cotato.backend.domain.user.entity.Type;
 
 @Service
 @RequiredArgsConstructor
@@ -82,7 +81,7 @@ public class UserService {
                                 .name(request.name())
                                 .age(request.age())
                                 .phoneNumber(request.phoneNumber())
-                                .userType(Type.ADMIN)
+                                .userType(UserType.ADMIN)
                                 .role(request.role())
                                 .build()
                 ));
@@ -91,13 +90,13 @@ public class UserService {
     }
 
     private void validateApplicant(UserEntity user) {
-        if (user.getUserType() != Type.APPLICANT) {
+        if (user.getUserType() != UserType.APPLICANT) {
             throw new AppException(ErrorCode.NOT_APPLICANT);
         }
     }
 
     private void validateAdmin(UserEntity user) {
-        if (user.getUserType() != Type.ADMIN) {
+        if (user.getUserType() != UserType.ADMIN) {
             throw new AppException(ErrorCode.NOT_ADMIN);
         }
     }
