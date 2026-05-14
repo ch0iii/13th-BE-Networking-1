@@ -11,11 +11,13 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import cotato.backend.api.dto.response.DefaultIdResponse;
+import cotato.backend.domain.user.dto.request.AdminCreateRequest;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
-@Tag(name = "사용자", description = "지원자 및 운영진 API")
+@Tag(name = "유저", description = "지원자 및 운영진 API")
 public class UserController {
 
     private final UserService userService;
@@ -30,6 +32,7 @@ public class UserController {
         );
     }
 
+
     @PatchMapping("/applicants/{userId}")
     @Operation(summary = "지원자 정보 수정")
     public ResponseEntity<Void> updateApplicant(
@@ -40,13 +43,29 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/staff")
+    @Operation(summary = "운영진 생성")
+    public ResponseEntity<DataResponse<DefaultIdResponse>> createStaff(
+            @Valid @RequestBody AdminCreateRequest request
+    ) {
+        Long userId = userService.createStaff(request);
+
+        return ResponseEntity.ok(
+                DataResponse.created(
+                        DefaultIdResponse.of(userId)
+                )
+        );
+    }
+
+
+
     @GetMapping("/staff/{userId}")
     @Operation(summary = "운영진 정보 조회")
-    public ResponseEntity<DataResponse<AdminResponse>> getStaff(
+    public ResponseEntity<DataResponse<AdminResponse>> getAdmin(
             @PathVariable Long userId
     ) {
         return ResponseEntity.ok(
-                DataResponse.from(userService.getStaff(userId))
+                DataResponse.from(userService.getAdmin(userId))
         );
     }
 

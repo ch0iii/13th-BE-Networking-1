@@ -40,14 +40,16 @@ public class Application {
             Integer period,
             Part part,
             Integer ability,
-            Integer passion
+            Integer passion,
+            LocalDateTime applicationTime
+
     ){
         this.applicant = applicant;
         this.period = period;
         this.part = part;
         this.ability = ability;
         this.passion = passion;
-        this.applicationTime = LocalDateTime.now();
+        this.applicationTime = applicationTime;
 
 
     }

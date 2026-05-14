@@ -55,10 +55,11 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public void updateStaffInfo(String name, Integer age, String phoneNumber, Role role) {
+    public void updateAdminInfo(String name, Integer age, String phoneNumber, Role role) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.role = role;
+
     }
 }

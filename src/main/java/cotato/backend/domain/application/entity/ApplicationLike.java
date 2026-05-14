@@ -26,11 +26,11 @@ public class ApplicationLike {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity staff;
+    private UserEntity admin;
 
     @Builder
-    public ApplicationLike(Application application, UserEntity staff) {
+    public ApplicationLike(Application application, UserEntity admin) {
         this.application = application;
-        this.staff = staff;
+        this.admin = admin;
     }
 }

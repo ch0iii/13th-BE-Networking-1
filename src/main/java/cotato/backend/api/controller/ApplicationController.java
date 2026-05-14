@@ -6,6 +6,7 @@ import cotato.backend.common.dto.DataResponse;
 import cotato.backend.domain.application.application.ApplicationService;
 import cotato.backend.domain.application.dto.request.ApplicationCreateRequest;
 import cotato.backend.domain.application.dto.response.ApplicationDetailResponse;
+import cotato.backend.domain.application.dto.response.ApplicationLikeResponse;
 import cotato.backend.domain.application.dto.response.ApplicationListResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,10 +27,9 @@ public class ApplicationController {
     @PostMapping
     @Operation(summary = "지원서 생성")
     public ResponseEntity<DataResponse<DefaultIdResponse>> createApplication(
-            @RequestParam Long userId,
             @Valid @RequestBody ApplicationCreateRequest request
     ) {
-        Long applicationId = applicationService.createApplication(userId, request);
+        Long applicationId = applicationService.createApplication(request);
 
         return ResponseEntity.ok(
                 DataResponse.created(
@@ -64,16 +64,14 @@ public class ApplicationController {
     }
 
     @PostMapping("/{applicationId}/likes")
-    @Operation(summary = "지원서 좋아요")
-    public ResponseEntity<DataResponse<DefaultIdResponse>> likeApplication(
+    @Operation(summary = "지원서 좋아요 토글")
+    public ResponseEntity<DataResponse<ApplicationLikeResponse>> likeApplication(
             @PathVariable Long applicationId,
             @RequestParam Long userId
     ) {
-        Long likeId = applicationService.likeApplication(applicationId, userId);
-
         return ResponseEntity.ok(
-                DataResponse.created(
-                        DefaultIdResponse.of(likeId)
+                DataResponse.from(
+                        applicationService.toggleApplicationLike(applicationId, userId)
                 )
         );
     }
