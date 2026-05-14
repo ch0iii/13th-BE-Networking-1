@@ -2,6 +2,7 @@ package cotato.backend.domain.application.entity;
 
 import cotato.backend.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +17,7 @@ public class Application {
 
     private Integer period;
 
-    private String part;
+    private Part part;
 
     private Integer ability;
 
@@ -27,4 +28,22 @@ public class Application {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity applicant;
+
+    @Builder
+    public Application(
+            UserEntity applicant,
+            Integer period,
+            Part part,
+            Integer ability,
+            Integer passion
+    ){
+        this.applicant = applicant;
+        this.period = period;
+        this.part = part;
+        this.ability = ability;
+        this.passion = passion;
+        this.applicationTime = LocalDateTime.now();
+
+
+    }
 }
