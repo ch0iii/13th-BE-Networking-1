@@ -49,7 +49,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateStaff(Long userId, AdminUpdateRequest request) {
+    public void updateAdmin(Long userId, AdminUpdateRequest request) {
         UserEntity user = getUser(userId);
 
         user.updateAdminInfo(
@@ -66,8 +66,8 @@ public class UserService {
     }
 
     @Transactional
-    public Long createStaff(AdminCreateRequest request) {
-        UserEntity staff = userRepository.findByPhoneNumber(request.phoneNumber())
+    public Long createAdmin(AdminCreateRequest request) {
+        UserEntity admin = userRepository.findByPhoneNumber(request.phoneNumber())
                 .map(user -> {
                     user.updateAdminInfo(
                             request.name(),
@@ -87,7 +87,7 @@ public class UserService {
                                 .build()
                 ));
 
-        return staff.getId();
+        return admin.getId();
     }
 
     private void validateApplicant(UserEntity user) {

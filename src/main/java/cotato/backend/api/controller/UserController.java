@@ -43,12 +43,12 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/staff")
+    @PostMapping("/admin")
     @Operation(summary = "운영진 생성")
-    public ResponseEntity<DataResponse<DefaultIdResponse>> createStaff(
+    public ResponseEntity<DataResponse<DefaultIdResponse>> createAdmin (
             @Valid @RequestBody AdminCreateRequest request
     ) {
-        Long userId = userService.createStaff(request);
+        Long userId = userService.createAdmin(request);
 
         return ResponseEntity.ok(
                 DataResponse.created(
@@ -59,7 +59,7 @@ public class UserController {
 
 
 
-    @GetMapping("/staff/{userId}")
+    @GetMapping("/admin/{userId}")
     @Operation(summary = "운영진 정보 조회")
     public ResponseEntity<DataResponse<AdminResponse>> getAdmin(
             @PathVariable Long userId
@@ -69,13 +69,13 @@ public class UserController {
         );
     }
 
-    @PatchMapping("/staff/{userId}")
+    @PatchMapping("/admin/{userId}")
     @Operation(summary = "운영진 정보 수정")
-    public ResponseEntity<Void> updateStaff(
+    public ResponseEntity<Void> updateAdmin(
             @PathVariable Long userId,
             @Valid @RequestBody AdminUpdateRequest request
     ) {
-        userService.updateStaff(userId, request);
+        userService.updateAdmin(userId, request);
         return ResponseEntity.noContent().build();
     }
 }
