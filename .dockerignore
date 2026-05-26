@@ -1,0 +1,13 @@
+.git
+.gitignore
+.github
+*.md
+build/
+.gradle/
+out/
+.idea/
+*.iml
+docker-compose*.yml
+.env
+.env.*
+!.env.example
