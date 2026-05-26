@@ -4,6 +4,8 @@ spring:
     username: ${DB_USERNAME:cotato_user}
     password: ${DB_PASSWORD:cotato1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    profiles:
+      active: local
 
   jpa:
     hibernate:
