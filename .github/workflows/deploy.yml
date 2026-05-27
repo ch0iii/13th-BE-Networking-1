@@ -38,7 +38,7 @@ jobs:
             docker rm cotato-app || true
             docker run -d \
               --name cotato-app \
-              --network 13th-be-networking-1_default \
+              --network ubuntu_default \
               -p 8080:8080 \
               -e SPRING_PROFILES_ACTIVE=prod \
               -e DB_HOST=cotato-db \
