@@ -1,3 +1,4 @@
+
 # 배포 문서
 
 ## 1. 아키텍처 다이어그램
@@ -27,9 +28,11 @@
 
 ## 3. 배포된 Swagger 접속 화면
 
+<img width="700" height="600" alt="스크린샷 2026-05-27 오후 3 10 07" src="https://github.com/user-attachments/assets/73c40977-12ee-454b-9e73-917efc3d91de" />
 
 ## 4. GitHub Actions 화면
 
+<img width="700" height="550" alt="스크린샷 2026-05-27 오후 3 47 54" src="https://github.com/user-attachments/assets/2350048b-f19d-4ce1-9f31-f6d037117a6d" />
 
 ## 5. Dockerfile / Nginx 설정
 
