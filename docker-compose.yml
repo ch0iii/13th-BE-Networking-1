@@ -11,7 +11,7 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql   # 데이터 영속성 보장
     healthcheck:
@@ -21,9 +21,7 @@ services:
       retries: 5
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 13th-be-networking-1-app:latest  # build 대신 image 사용
     container_name: cotato-app
     restart: unless-stopped
     depends_on:

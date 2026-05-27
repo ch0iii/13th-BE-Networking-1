@@ -1,5 +1,5 @@
 # ---- Build Stage ----
-FROM eclipse-temurin:17-jdk-alpine AS builder
+FROM eclipse-temurin:17-jdk AS builder
 
 WORKDIR /app
 
@@ -17,12 +17,12 @@ COPY src src
 RUN ./gradlew bootJar -x test --no-daemon
 
 # ---- Run Stage ----
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
 # 보안: root 대신 전용 유저 사용
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN groupadd appgroup && useradd -g appgroup appuser
 
 COPY --from=builder /app/build/libs/*.jar app.jar
 

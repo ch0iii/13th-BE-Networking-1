@@ -46,5 +46,5 @@ out/
 .env.prod
 
 ### Docker ###
-docker-compose.override.yml.env
-.env
+docker-compose.override.yml
+*.tar
